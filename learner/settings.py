@@ -26,13 +26,20 @@ SECRET_KEY = 'h83d_o*i1946#m*!5^dyufura9=zk6egg7&scmugjk##qtj^ny'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 ALLOWED_HOSTS = []
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'igdtunistash@gmail.com'
+EMAIL_HOST      = 'smtp.gmail.com' 
 EMAIL_HOST_PASSWORD = 'igdtukijai'
-EMAIL_PORT = 587
+EMAIL_HOST_USER = 'igdtunistash@gmail.com'
+EMAIL_PORT      = 587
+EMAIL_USE_TLS   = True
+DEFAULT_FROM_EMAIL  = 'igdtunistash@gmail.com'
+SERVER_EMAIL    = 'igdtunistash@gmail.com'
+# for console
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Application definition
 
@@ -62,7 +69,7 @@ ROOT_URLCONF = 'learner.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,8 +133,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA = '/media/'
+MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

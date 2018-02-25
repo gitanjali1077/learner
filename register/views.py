@@ -13,6 +13,8 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.contrib import auth
 from .models import Profile
+from django.shortcuts import render_to_response, get_object_or_404
+
 #from django.contrib.auth.models import check_password
 
 def index(request,string=None):
@@ -56,7 +58,7 @@ def index(request,string=None):
 
            user_pro.save() 
            user1.save()
-           return render(request, 'profile_display.html',{'profile_form':profile_form})
+           return render(request, 'profile_display.html',{'pro':user_pro})
   
            #else:
             # user1._profile_photo='abc1.jpg'
@@ -141,6 +143,62 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+def profile_update(request,uid=None):
+  msgs=''
+  instance = get_object_or_404(Profile,id=uid)
+  post_form=ProfileForm(request.POST or None,instance=instance)
+  button="update profile"
+  user1= request.user
+  user_pro=Profile.objects.get(user=user1)
+                   
+  if post_form.is_valid() :
+           ab="post chala"       
+           post = post_form.save(commit=False)
+            
+           #prof= profile_form.save()
+           user_pro.full_name = post_form.cleaned_data['full_name']
+           user_pro.about_yourself = post_form.cleaned_data['about_yourself']
+           user_pro.Education = post_form.cleaned_data['Education']
+           user_pro.Experience = post_form.cleaned_data['Experience']
+           user_pro.skills = post_form.cleaned_data['skills']
+           user_pro.Work = post_form.cleaned_data['Work']
+           user_pro.profile_status=1
+           pp=request.FILES.get('profile_photo')
+           res=request.FILES.get('resume')
+
+
+           if pp:
+              user_pro.profile_photo=request.FILES['profile_photo']#,False]
+              user_pro.resume=request.FILES['resume']#,False]
+           
+           #profile=profile_form.save(commit=False)
+           #profile.user_id=user1.id+1
+           #profile.college=profile_form.cleaned_data['college']
+           #profile.save()
+         
+           post.save()
+           msgs=" Post Updated!" 
+               #return redirect('index.html')
+           return render(request, 'profile.html',{'profile_form':post_form})
+   
+  else:
+             msgs=""
+             button="update profile"
+             return render(request, 'profile.html',{'profile_form':post_form})
+   
+  return render(request, 'profile.html',{'profile_form':post_form})
+   
+
+def profile_display(request):
+ if  request.user.username:
+     
+   user=request.user
+   pro= Profile.objects.filter(user=user).first()
+   print pro
+   #pro='kl'
+   return render(request, 'profile.html',{'pro':pro})
+ else:
+   return redirect('/login/')
 
 
 

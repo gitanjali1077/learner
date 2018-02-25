@@ -18,8 +18,8 @@ class Profile(models.Model):
     Experience =models.TextField(blank=True)
     skills =models.TextField(blank=True)
     Work =models.TextField(blank=True)
-    profile_photo = models.FileField( blank=True,default="static\abc1.jpg",null=True)#default = os.path.join(settings.STATIC_ROOT,'static','abc1.jpg'),
-    resume = models.FileField( blank=True,null=True)
+    profile_photo = models.FileField( blank=True,default="static\abc1.jpg")#default = os.path.join(settings.STATIC_ROOT,'static','abc1.jpg'),
+    resume = models.FileField( blank=True)
     #default = os.path.join(settings.STATIC_ROOT,'static','abc1.jpg'),
    
                             #)#upload_to='media/')
