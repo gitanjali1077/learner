@@ -31,8 +31,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 EMAIL_HOST      = 'smtp.gmail.com' 
-EMAIL_HOST_PASSWORD = 'igdtukijai'
-EMAIL_HOST_USER = 'igdtunistash@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = ''
 EMAIL_PORT      = 587
 EMAIL_USE_TLS   = True
 DEFAULT_FROM_EMAIL  = 'igdtunistash@gmail.com'
