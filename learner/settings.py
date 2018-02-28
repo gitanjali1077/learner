@@ -31,12 +31,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 EMAIL_HOST      = 'smtp.gmail.com' 
-EMAIL_HOST_PASSWORD = ''
-EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = '{hackerrank}'
+EMAIL_HOST_USER = 'hackerrankteam2@gmail.com'
 EMAIL_PORT      = 587
 EMAIL_USE_TLS   = True
-DEFAULT_FROM_EMAIL  = 'igdtunistash@gmail.com'
-SERVER_EMAIL    = 'igdtunistash@gmail.com'
+DEFAULT_FROM_EMAIL  = 'hackerrankteam2@gmail.com'
+SERVER_EMAIL    = 'hackerrankteam2@gmail.com'
 # for console
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

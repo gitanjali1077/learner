@@ -19,7 +19,7 @@ from django.conf.urls import url,include
 
 from django.conf.urls.static import  static
 from django.contrib import admin
-from register.views import signup,activate,index,login,profile_display,profile_update
+from register.views import signup,activate,index,login,profile_display,profile_update,logout
 from django.conf.urls import include ,url
 from django.conf import settings 
 from django.contrib.auth import views as auth_views
@@ -34,12 +34,12 @@ urlpatterns = [
 url(r'^signup/$', signup, name='signup'),
     url(r'^captcha/', include('captcha.urls')),
     url(r'^profile_display/$', profile_display, name='profile_display'),
-    url(r'^profile_update/(?P<uid>[0-9]+)/$',profile_update,name='profile_update'),
-    
+    url(r'^profile_update/$',profile_update,name='profile_update'),
+    #(?P<uid>[0-9]+)/
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
      activate, name='activate'),
     url(r'^login/$', login, name='login'),
-    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^logout/$',logout, name='logout'),
  url(r'^(?P<string>[\w\-]+)/$',index,name='index'),
   
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

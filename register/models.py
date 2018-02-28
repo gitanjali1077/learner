@@ -20,6 +20,8 @@ class Profile(models.Model):
     Work =models.TextField(blank=True)
     profile_photo = models.FileField( blank=True,default="static\abc1.jpg")#default = os.path.join(settings.STATIC_ROOT,'static','abc1.jpg'),
     resume = models.FileField( blank=True)
+    status =models.IntegerField(blank=True,default=0)
+    
     #default = os.path.join(settings.STATIC_ROOT,'static','abc1.jpg'),
    
                             #)#upload_to='media/')
@@ -39,7 +41,7 @@ class Profile(models.Model):
         Work=''#instance._Work
         profile_photo=''#instance._profile_photo
         resume=''#instance._resume
-      
+        status=0
         #c=instance._rate
         a=Profile.objects.create(user=instance,full_name=full_name,about_yourself=about_yourself,Education=Education,Experience=Experience,skills=skills)#,rate=c)
 

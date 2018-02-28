@@ -25,6 +25,10 @@ def index(request,string=None):
   if a=='profile':
     if request.user.username:
       # for empty form
+      user= request.user
+      p_user = Profile.objects.get(user=user)
+      if p_user.status==1:
+        return redirect('/profile_display/' )
       if request.method == 'GET':
   
         return render(request, template,{'profile_form':profile_form})
@@ -46,6 +50,8 @@ def index(request,string=None):
              user_pro.Experience = profile_form.cleaned_data['Experience']
              user_pro.skills = profile_form.cleaned_data['skills']
              user_pro.Work = profile_form.cleaned_data['Work']
+             user_pro.status = 1
+             
              pp=request.FILES.get('profile_photo')
              res=request.FILES.get('resume')
              print user_pro.full_name
@@ -72,6 +78,9 @@ def index(request,string=None):
   return render(request, template,{'profile_form':profile_form})
   
 # from here user login starts
+def logout(request):
+  auth.logout(request)
+  return render(request, 'logout.html')
 
 def login(request,string=None):
   if request.method == 'GET':
@@ -143,12 +152,14 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
-def profile_update(request,uid=None):
+def profile_update(request): #,uid=None):
   msgs=''
+  user1= request.user
+  uid=Profile.objects.filter(user=user1).first().id
   instance = get_object_or_404(Profile,id=uid)
   post_form=ProfileForm(request.POST or None,instance=instance)
   button="update profile"
-  user1= request.user
+  
   user_pro=Profile.objects.get(user=user1)
                    
   if post_form.is_valid() :
@@ -196,7 +207,7 @@ def profile_display(request):
    pro= Profile.objects.filter(user=user).first()
    print pro
    #pro='kl'
-   return render(request, 'profile.html',{'pro':pro})
+   return render(request, 'profile_display.html',{'pro':pro})
  else:
    return redirect('/login/')
 
