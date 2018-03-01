@@ -24,8 +24,15 @@ class UserFormlog(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
     captcha = CaptchaField()
 
+class AddResourceForm(forms.Form):
+    subject_name= forms.CharField()
+    subcategory = forms.CharField()
+    details = forms.CharField()
+    url = forms.URLField(label='Your website', required=False)
+
+
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('full_name','about_yourself','Education','Experience','skills','profile_photo','Work','resume')
+        fields = ('full_name','about_yourself','Education','Experience','skills','profile_photo','Work','resume','interest1')
         

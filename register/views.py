@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django import forms
-from .forms import SignupForm ,UserFormlog,ProfileForm 
+from .forms import SignupForm ,UserFormlog,ProfileForm ,AddResourceForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -12,8 +12,10 @@ from django.contrib.auth.models import User
 #from django.contrib.auth.models import check_password
 from django.core.mail import EmailMessage
 from django.contrib import auth
-from .models import Profile
+from .models import Profile,subject,subcategory,resource
 from django.shortcuts import render_to_response, get_object_or_404
+from register.functions import add_mmkey 
+from register.bs import score 
 
 #from django.contrib.auth.models import check_password
 
@@ -50,6 +52,8 @@ def index(request,string=None):
              user_pro.Experience = profile_form.cleaned_data['Experience']
              user_pro.skills = profile_form.cleaned_data['skills']
              user_pro.Work = profile_form.cleaned_data['Work']
+             user_pro.interst1 = profile_form.cleaned_data['interest1']
+             
              user_pro.status = 1
              
              pp=request.FILES.get('profile_photo')
@@ -76,6 +80,64 @@ def index(request,string=None):
        return redirect('/login/')
 
   return render(request, template,{'profile_form':profile_form})
+
+
+# this view is responsible for ADDING A NEW RESOURCE IN THE DATABASE
+def add_resource(request):
+
+  form=AddResourceForm(request.GET)
+  
+  if request.method == 'GET':
+
+     return render(request, 'add_resource.html', {
+        'form': form    #user_form
+       })
+    
+  if request.method == 'POST':
+           msg="Your resource has been successfully added"
+           add_form =AddResourceForm(request.POST)
+           user1= request.user
+           #user_pro=Profile.objects.get(user=user1)
+           if add_form.is_valid() :
+             #ab="form all ok"       
+             #puser1= profile_form.save(commit=False)
+           
+           #prof= profile_form.save()
+             subject_name = add_form.cleaned_data['subject_name']
+             subcate = add_form.cleaned_data['subcategory']
+             details = add_form.cleaned_data['details']
+             url = add_form.cleaned_data['url']
+
+             # adding fields in the database
+             
+             subj= subject.objects.create(name=subject_name)
+             subj.userid.add(user1)
+             cate= subcategory.objects.create(name=subcate)
+             cate.subid.add(subj)
+
+
+             #calculation of score
+             score_url= score(url,details)
+             res= resource.objects.create(url_field=url,score=score_url)
+             res.catid.add(cate)
+             
+             return render(request, 'add_resource.html',{'form': form,'msg':msg, 'score': score_url})
+  
+           #else:
+            # user1._profile_photo='abc1.jpg'
+           
+           
+           else:
+             msg=" Some error occured"
+             template='add_resource.html'
+             return render(request, 'add_resource.html', {
+                 'form': form    #user_form
+                })  
+      # here zoya u could manipulate the things add ur validation methods
+  return render(request, 'add_resource.html', {
+        'form': form    #user_form
+       })    
+
   
 # from here user login starts
 def logout(request):
@@ -176,7 +238,7 @@ def profile_update(request): #,uid=None):
            user_pro.profile_status=1
            pp=request.FILES.get('profile_photo')
            res=request.FILES.get('resume')
-
+           
 
            if pp:
               user_pro.profile_photo=request.FILES['profile_photo']#,False]
