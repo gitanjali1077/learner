@@ -1,3 +1,4 @@
+{% extends 'base1.html' %}
 
 {% load staticfiles %}	
 
@@ -9,6 +10,8 @@
 				<span class="login100-form-title p-b-37">
 					Add New Resource
 				</span>
+
+{% block content %}
 {% csrf_token %}
    {% for field in form %}
     <div class="form-group" >
@@ -25,6 +28,8 @@
 </div>
 
 {% endfor %}
+
+
 <div class="container-login100-form-btn">
 					<button class="login100-form-btn">
 						Add resource
@@ -47,4 +52,4 @@
 		</div>
 	</div>
 	
-	
+	{% endblock %}
