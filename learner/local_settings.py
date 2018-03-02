@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,11 +24,11 @@ LOGIN_REDIRECT_URL = 'index'
 SECRET_KEY = 'h83d_o*i1946#m*!5^dyufura9=zk6egg7&scmugjk##qtj^ny'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = []
 
 EMAIL_HOST      = 'smtp.gmail.com' 
 EMAIL_HOST_PASSWORD = '{hackerrank}'
@@ -93,13 +92,8 @@ WSGI_APPLICATION = 'learner.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbd6nt9g73i225',
-        'USER': 'sxztgausycmkiw',
-        'PASSWORD': 'fa68807de4b3f9c04342878c742cdb32ef2f45006b2cb4e7b975e1c4f0b25c04',
-        'HOST': 'ec2-54-221-207-184.compute-1.amazonaws.com',
-        'PORT': '5432',
-       # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -136,8 +130,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

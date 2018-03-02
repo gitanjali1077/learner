@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 % load staticfiles %}
+=======
+
+{% load staticfiles %}
+>>>>>>> d610f1f05455783f73b55a480666e058c349e008
 <!DOCTYPE html>
 <!-- saved from url=(0056)http://kodeforest.net/html/books/library/contact-us.html -->
 <html lang="en" class=" js no-touch cssanimations csstransitions"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
@@ -12,6 +17,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Learners World! Come, Contribute and Learn!</title>
 <!-- CUSTOM STYLE -->
+<<<<<<< HEAD
 <link href="{% static './about-us_files/style.css' %}" rel="stylesheet">
 <!-- THEME TYPO -->
 <link href="{% static './about-us_files/themetypo.css' %}" rel="stylesheet">
@@ -36,6 +42,30 @@
 <!-- Component -->
 <link href="{% static './about-us_files/component.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+=======
+<link href="{% static './home_files/style.css' %} " rel="stylesheet">
+<!-- THEME TYPO -->
+<link href="{% static './home_files/themetypo.css' %}" rel="stylesheet">
+<!-- BOOTSTRAP -->
+<link href="{% static './home_files/bootstrap.css' %}" rel="stylesheet">
+<!-- COLOR FILE -->
+<link href="{% static './home_files/color.css' %}" rel="stylesheet">
+<!-- FONT AWESOME -->
+<link href="{% static './home_files/font-awesome.min.css' %}" rel="stylesheet">
+<!-- BX SLIDER -->
+<link href="{% static './home_files/jquery.bxslider.css' %}" rel="stylesheet">
+<!-- Boostrap Slider -->
+<link href="{% static './home_files/bootstrap-slider.css' %}" rel="stylesheet">
+<!-- Widgets -->
+<link href="{% static './home_files/widget.css' %}" rel="stylesheet">
+<!-- Owl Carusel -->
+<link href="{% static './home_files/owl.carousel.css' %}" rel="stylesheet">
+<!-- responsive -->
+<link href="{% static './home_files/responsive.css' %}" rel="stylesheet">
+<!-- Component -->
+<link href="{% static './home_files/component.css' %}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static './home_files/bookblock.css' %}">
+>>>>>>> d610f1f05455783f73b55a480666e058c349e008
 
 <script type="text/javascript" charset="UTF-8" src="./contact-us_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="./contact-us_files/map.js"></script><style type="text/css">.gm-style {
         font: 400 11px Roboto, Arial, sans-serif;
@@ -72,17 +102,17 @@
         	<div class="container">
             	<!--LOGO START-->
             	<div class="logo">
-                    <a href="home.html#"><img src="./home_files/logo-2.png" alt=""></a>
+                    <a href="{% url 'index' 'home' %}" > <img src="./home_files/logo-2.png" alt=""></a>
                 </div>
                 <!--LOGO END-->
                 <div class="kode-navigation">
                     <ul>
-						<li><a href="home.html">Home</a>
+						<li><a href="{% url 'index' 'home' %}">Home</a>
 							
 						</li>
 						
-						<li><a href="about-us.html">About Us</a></li>
-						<li><a href="books.html">Our Books</a>
+						<li><a href="{% url 'index' 'about-us' %}">About Us</a></li>
+						<li><a href="{% url 'index' 'books' %}" > Our Books</a>
 							<ul>
 								<li><a href="books3-sidebar.html">Book With Sidebar</a></li>
 								<li><a href="books-details.html">Book Detail</a></li>                                
