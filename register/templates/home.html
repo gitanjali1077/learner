@@ -1,3 +1,5 @@
+
+{% load staticfiles %}
 <!DOCTYPE html>
 
 <html lang="en" class=" js csstransforms3d csstransitions js no-touch cssanimations csstransitions csstransformspreserve3d"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
@@ -10,28 +12,28 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>LearnersWorld</title>
 <!-- CUSTOM STYLE -->
-<link href="./home_files/style.css" rel="stylesheet">
+<link href="{% static './home_files/style.css' %} " rel="stylesheet">
 <!-- THEME TYPO -->
-<link href="./home_files/themetypo.css" rel="stylesheet">
+<link href="{% static './home_files/themetypo.css' %}" rel="stylesheet">
 <!-- BOOTSTRAP -->
-<link href="./home_files/bootstrap.css" rel="stylesheet">
+<link href="{% static './home_files/bootstrap.css' %}" rel="stylesheet">
 <!-- COLOR FILE -->
-<link href="./home_files/color.css" rel="stylesheet">
+<link href="{% static './home_files/color.css' %}" rel="stylesheet">
 <!-- FONT AWESOME -->
-<link href="./home_files/font-awesome.min.css" rel="stylesheet">
+<link href="{% static './home_files/font-awesome.min.css' %}" rel="stylesheet">
 <!-- BX SLIDER -->
-<link href="./home_files/jquery.bxslider.css" rel="stylesheet">
+<link href="{% static './home_files/jquery.bxslider.css' %}" rel="stylesheet">
 <!-- Boostrap Slider -->
-<link href="./home_files/bootstrap-slider.css" rel="stylesheet">
+<link href="{% static './home_files/bootstrap-slider.css' %}" rel="stylesheet">
 <!-- Widgets -->
-<link href="./home_files/widget.css" rel="stylesheet">
+<link href="{% static './home_files/widget.css' %}" rel="stylesheet">
 <!-- Owl Carusel -->
-<link href="./home_files/owl.carousel.css" rel="stylesheet">
+<link href="{% static './home_files/owl.carousel.css' %}" rel="stylesheet">
 <!-- responsive -->
-<link href="./home_files/responsive.css" rel="stylesheet">
+<link href="{% static './home_files/responsive.css' %}" rel="stylesheet">
 <!-- Component -->
-<link href="./home_files/component.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="./home_files/bookblock.css">
+<link href="{% static './home_files/component.css' %}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static './home_files/bookblock.css' %}">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -74,17 +76,17 @@
         	<div class="container">
             	<!--LOGO START-->
             	<div class="logo">
-                    <a href="home.html#"><img src="./home_files/logo-2.png" alt=""></a>
+                    <a href="{% url 'index' 'home' %}" > <img src="./home_files/logo-2.png" alt=""></a>
                 </div>
                 <!--LOGO END-->
                 <div class="kode-navigation">
                     <ul>
-						<li><a href="home.html">Home</a>
+						<li><a href="{% url 'index' 'home' %}">Home</a>
 							
 						</li>
 						
-						<li><a href="about-us.html">About Us</a></li>
-						<li><a href="books.html">Our Books</a>
+						<li><a href="{% url 'index' 'about-us' %}">About Us</a></li>
+						<li><a href="{% url 'index' 'books' %}" > Our Books</a>
 							<ul>
 								<li><a href="books3-sidebar.html">Book With Sidebar</a></li>
 								<li><a href="books-details.html">Book Detail</a></li>                                
