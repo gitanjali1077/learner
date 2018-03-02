@@ -1,6 +1,9 @@
 
+{% extends 'base3.html' %}
+{% load staticfiles %}
+{% block title %}Profile of the user{% endblock %}
+{% block content %}
 
-profile of the user
 {{   pro.username  }}  <br>
 {{   pro.full_name  }}  <br>
 {{   pro.full_name  }}  <br>
@@ -25,4 +28,6 @@ profile of the user
 <a href=""> add resource </a>
   <p><a href="{% url 'logout' %}">logout</a></p>
 <p><a href="{% url 'profile_update'  %}">update</a></p>
+
+{% endblock %}
 

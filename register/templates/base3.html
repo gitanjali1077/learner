@@ -102,79 +102,11 @@
     <div class="kode-inner-banner">
 
     	<div class="kode-page-heading">
-        	<h2>CONTRIBUTE</h2>
+        	<h2>USER PROFILE</h2>
             
         </div>
     </div>
-       <div class="search-section">
-        <div class="container">
-            <!-- Nav tabs -->
-              <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation"><a href="{% url 'index' 'index' %}" aria-controls="Basic" role="tab" data-toggle="tab">Basic</a></li>
-                <li role="presentation" class="active"><a href="{% url 'index' 'index' %}" aria-controls="Author" role="tab" data-toggle="tab">Author</a></li>
-                <li role="presentation"><a href="{% url 'index' 'index' %}" aria-controls="Publications" role="tab" data-toggle="tab">Publications</a></li>
-              </ul>
-            
-              <!-- Tab panes -->
-              <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="Basic">
-                    <div class="form-container">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-4">
-                                <input type="text" placeholder="First Name">
-                            </div>
-                            <div class="col-md-3 col-sm-4">
-                                <input type="text" placeholder="Middle Name">
-                            </div>
-                            <div class="col-md-3 col-sm-4">
-                                <input type="text" placeholder="Last Name">
-                            </div>
-                            <div class="col-md-3 col-sm-12">
-                                <button>Search Author</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="Author">
-                    <div class="form-container">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-4">
-                                <input type="text" placeholder="First Name">
-                            </div>
-                            <div class="col-md-3 col-sm-4">
-                                <input type="text" placeholder="Middle Name">
-                            </div>
-                            <div class="col-md-3 col-sm-4">
-                                <input type="text" placeholder="Last Name">
-                            </div>
-                            <div class="col-md-3 col-sm-12">
-                                <button>Search Author</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="Publications">
-                    <div class="form-container">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-4">
-                                <input type="text" placeholder="First Name">
-                            </div>
-                            <div class="col-md-3 col-sm-4">
-                                <input type="text" placeholder="Middle Name">
-                            </div>
-                            <div class="col-md-3 col-sm-4">
-                                <input type="text" placeholder="Last Name">
-                            </div>
-                            <div class="col-md-3 col-sm-12">
-                                <button>Search Author</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              </div>
-        </div>
-    </div>
-
+                    
     <div class="search-section">
 		<div class="container">
 			
@@ -189,11 +121,33 @@
         	<div class="container">
             	<!--SECTION CONTENT START-->
             	<div class="heading-1">
-                	<h2>{% block content %}
-            			{% endblock %}</h2>
+                	<p>{% block content %}
+            			{% endblock %}</p>
                    
                 </div>
-         
+                <!--SECTION CONTENT END-->
+                <div class="row">
+                	<div class="col-md-6">
+                    	<h2>Who we are?</h2>
+                        
+                        <ul class="kd-list3">
+                            <li><a href="{% url 'index' 'index' %}">Consetetur sadipscing elitr sed diam nonumy eirmod</a></li>
+                            <li><a href="{% url 'index' 'index' %}#">Sadipscing elitr sed diam nonumy eirmod</a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                    	<div class="about-thumb">
+                        	<img src="{% static './about-us_files/about-img3.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+                 
+       
+	</div>	
 	<!--FACTS SECTION END-->
 	<section class="kode-uptodate">
 		<div class="container">
